@@ -1,5 +1,5 @@
 require 'net/ftp'
-require_relative 'ftp_makepasv'
+require_relative 'ext/ftp_makepasv'
 
 class FtpFiles
 

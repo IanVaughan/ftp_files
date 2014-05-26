@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative 'ftp_files'
+require './lib/ftp_files'
 
 host = 'my.ftp.server'
 user = 'user'
