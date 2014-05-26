@@ -28,17 +28,19 @@ class FtpFiles
 
   def initialize(host, port, user, password, passive)
     @ftp = Net::FTP.new
-    @ftp.passive = passive
-    @ftp.connect host, port
-    @ftp.login user, password
+    ftp.passive = passive
+    ftp.connect host, port
+    ftp.login user, password
   end
 
   def start
     get_files
-    @ftp.close
+    ftp.close
   end
 
   private
+
+  attr_reader :ftp
 
   def extract_names file_array
     file_array.map { |file| file.gsub(FILENAME_REGEX, '\2') }
@@ -60,20 +62,20 @@ class FtpFiles
 
   def get_files
     with_indent do
-      puts "#{File.basename @ftp.pwd}"
-      list = @ftp.list
+      puts "#{File.basename ftp.pwd}"
+      list = ftp.list
       dirs = extract_dirs_names list
       files = extract_file_names list
       list files
       dirs.each do |f|
         begin
-          @ftp.chdir(f)
+          ftp.chdir(f)
           get_files
         rescue Net::FTPPermError => e
           puts "ERROR: Could not open #{e}"
         end
       end
-      @ftp.chdir('..')
+      ftp.chdir('..')
     end
   end
 end
