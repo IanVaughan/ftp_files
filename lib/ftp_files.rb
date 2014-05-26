@@ -1,6 +1,6 @@
 require 'net/ftp'
 require 'yaml'
-require_relative 'ext/ftp_makepasv'
+require_relative 'ext/ftp'
 
 class FtpFiles
 
