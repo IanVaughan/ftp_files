@@ -1,0 +1,6 @@
+server1:
+  host: 'my.ftp.server'
+  user: 'user'
+  password: 'password'
+  port: 22
+  passive: true

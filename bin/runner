@@ -2,9 +2,5 @@
 
 require './lib/ftp_files'
 
-host = 'my.ftp.server'
-user = 'user'
-passwd = 'password'
-port = 2222 # If non-standard 22
-FtpFiles.run(host, port, user, passwd, true)
+FtpFiles.run('server1')
 
