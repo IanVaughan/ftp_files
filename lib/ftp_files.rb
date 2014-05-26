@@ -1,8 +1,10 @@
 require 'net/ftp'
 require 'yaml'
 require_relative 'ext/ftp'
+require_relative 'output_utils'
 
 class FtpFiles
+  include OutputUtils
 
   YAML_CONFIG = './config/ftp_files.yml'
 
@@ -29,8 +31,6 @@ class FtpFiles
     @ftp.passive = passive
     @ftp.connect host, port
     @ftp.login user, password
-
-    @spaces = 0
   end
 
   def start
@@ -52,21 +52,10 @@ class FtpFiles
     extract_names file_array.select { |file| !!(file.match(/^d/)) }
   end
 
-  def puts args
-    super (' ' * @spaces) + args
-  end
-
   def list files
     with_indent do
       files.each { |f| puts f }
     end
-  end
-
-  def with_indent &block
-    raise unless block_given?
-    @spaces += 2
-    yield
-    @spaces -= 2
   end
 
   def get_files
