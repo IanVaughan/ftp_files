@@ -1,12 +1,23 @@
-Gem::Specification.new do |s|
-  s.name        = 'ftp_files'
-  s.version     = '0.0.1'
-  s.date        = '2014-05-25'
-  s.summary     = "List Files on a FTP site"
-  s.description = "It iterates all directories, listing the files within each as it goes"
-  s.authors     = ["Ian Vaughan"]
-  s.email       = 'ftp_files@ianvaughan.co.uk'
-  s.files       = %w{ bin/runner lib/ftp_files.rb lib/output_utils.rb lib/ext/ftp.rb config/ftp_files.yml.example }
-  s.homepage    = 'https://github.com/IanVaughan/ftp_files'
-  s.license     = 'MIT'
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'ftp_files/version'
+
+Gem::Specification.new do |spec|
+  spec.name          = "ftp_files"
+  spec.version       = FtpFiles::VERSION
+  spec.authors       = ["Ian Vaughan"]
+  spec.email         = ["github@ianvaughan.co.uk"]
+  spec.summary       = %q{List Files on a FTP site}
+  spec.description   = %q{It iterates all directories, listing the files within each as it goes}
+  spec.homepage      = "https://github.com/IanVaughan/ftp_files"
+  spec.license       = "MIT"
+
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "rake"
 end
