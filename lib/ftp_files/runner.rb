@@ -1,7 +1,7 @@
 require 'net/ftp'
 require 'yaml'
-require_relative 'ext/ftp'
-require_relative 'output_utils'
+require './lib/ext/ftp'
+require './lib/output_utils'
 
 class Runner
   include OutputUtils

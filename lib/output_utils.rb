@@ -10,5 +10,4 @@ module OutputUtils
     yield
     @spaces -= 2
   end
-
 end

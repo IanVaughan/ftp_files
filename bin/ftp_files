@@ -2,5 +2,4 @@
 
 require './lib/ftp_files'
 
-FtpFiles.run('server1')
-
+FtpFiles.run('stu')
